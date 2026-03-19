@@ -1,0 +1,28 @@
+import { useContext } from "react";
+import Contexto from "./Contexto";
+
+function ModalBorrar({user,limpiarBorrar,visible, eliminarUsuario})
+{
+    let {usuario} = useContext(Contexto)
+    return(<>
+     <div className={`modal-borrar ${visible == true ? " modal-visible" : ""} `}>
+          <div className="modal">
+              <button className="btn-borrar" onClick={(evento) => {
+                eliminarUsuario(user.correo);
+                fetch(`http://localhost:3000/eliminarUsuario`, {
+                    method: "DELETE",
+                    body : JSON.stringify({correo : user.correo}),
+                    headers : {
+                                "Authorization": "Bearer " + usuario.token,
+                                "Content-Type": "application/json"
+                            }
+                });
+                limpiarBorrar();                
+              }}>Borrar</button>
+              <button className="btn-borrar" onClick={() => limpiarBorrar()}>Cancelar</button>
+          </div>
+      </div>    
+    </>);
+}
+
+export default ModalBorrar;
