@@ -20,15 +20,19 @@ function Juegos()
         .then(respuesta => respuesta.json())
         .then(respuesta => setJuegos(respuesta.juegos));
     },[])
-    console.log(juegos);
 
+    function eliminarJuego(titulo,desarrollador)
+    {
+        setJuegos(juegos.filter((tituloJ,desarrolladorJ) => tituloJ != titulo && desarrollador != desarrolladorJ));
+    }
+    
     return(<>
         <div className="divJuegosAd">
         {
             juegos.length == 0 ?
             <li>No hay juegos</li> :
             juegos.map((juego) => {
-                return(<LiJuego key={juego._id} juego={juego} />)
+                return(<LiJuego key={juego._id} juego={juego} eliminarJuego={eliminarJuego}/>)
             })
         }
         </div>

@@ -10,7 +10,7 @@ function Login()
     let [correo, setCorreo] = useState("");
     let [pError, setPError] = useState("");
     return(<>
-        <form onSubmit={(evento) => {
+        <form className="login-form" onSubmit={(evento) => {
             setPError("");
             let error = [];
             evento.preventDefault();
@@ -43,10 +43,17 @@ function Login()
                 console.log(error);
             })
         }}>
-            <input type="text" placeholder="Correo Electronico" onChange={(evento) => setCorreo(evento.target.value)} />
-            <input type="password" placeholder="Contraseña" onChange={(evento) => setPassword(evento.target.value)}/>
-            <p className={pError != "" ? "" : "invisible"}>{pError}</p>
-            <input type="submit" value="Enviar" />
+            <div className="login-div">
+                <input className="login-inputs" type="text" placeholder="Correo Electronico" onChange={(evento) => setCorreo(evento.target.value)} />
+                <input className="login-inputs" type="password" placeholder="Contraseña" onChange={(evento) => setPassword(evento.target.value)}/>
+                <p className={pError != "" ? "error-login" : "invisible"}>{pError}</p>
+                <div className="login-div-btns">
+                    <input className="login-btn" type="submit" value="Enviar" />
+                    <button className="login-btn" onClick={() => {
+                        navigate("/registro")
+                    }}>Registro</button>
+                </div>
+            </div>
         </form>
     </>)
 }

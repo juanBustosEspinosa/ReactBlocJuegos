@@ -7,6 +7,9 @@ import Login from './Login.jsx';
 import AdministracionUsuarios from './AdministracionUsuarios.jsx';
 import { ProviderContexto } from './Contexto.jsx';
 import AdministracionJuegos from './AdministracionJuegos.jsx';
+import Blog from './Blog/Blog.jsx';
+import BlogUsuario from './Blog/BlogUsuarioBuscado.jsx';
+
 
 
 //Cuando hagamos el logout limpiar toda la memoria que tengamos
@@ -23,8 +26,7 @@ import AdministracionJuegos from './AdministracionJuegos.jsx';
     },
     {
       path : "/",
-      element: <h1>hola</h1>,//aqui iria la pagina principal
-      errorElement : <h1>error en el servidor</h1>
+      element: <Blog />,//aqui iria la pagina principal
     },
     {
       path : "/adminJuegos",
@@ -34,6 +36,11 @@ import AdministracionJuegos from './AdministracionJuegos.jsx';
     {
       path : "/adminUsuarios",
       element : <AdministracionUsuarios />,
+      errorElement : <h1>error en el servidor</h1>
+    },
+    {
+      path : "/BlogUsuario/:id",
+      element : <BlogUsuario />,
       errorElement : <h1>error en el servidor</h1>
     }
   ]);
