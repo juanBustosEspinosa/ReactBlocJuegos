@@ -13,6 +13,9 @@ function Blog()
     let [limite, setLimite] = useState(5)
     let [juegosInit,setJuegosInit] = useState([]);
     let [juegos,setJuegos] = useState([]);
+    let [carga, setCarga] = useState(true);
+    let [busquedaActiva, setBusquedaActiva] = useState(false);
+    let [likes, setLikes] = useState([])
 
     useEffect(() => {
         if (!usuario)
@@ -25,10 +28,31 @@ function Blog()
             }
         })
         .then(respuesta => respuesta.json())
-        .then(respuesta => setJuegosInit(respuesta.juegos))
+        .then(respuesta => {
+            setJuegosInit(respuesta.juegos)
+        })
+
+
+        fetch(`http://localhost:3000/darLikes?idUsuario=${usuario._id}`,{
+            method : "GET",
+            headers: {
+                "Authorization": "Bearer " + usuario.token
+            }
+        })
+        .then(respuesta => respuesta.json())
+        .then(respuesta => {
+            setLikes(respuesta);
+            console.log(respuesta);
+        })
+
     },[]);
 
-
+    function cargaJuegos(datos)
+    {
+        setBusquedaActiva(true);
+        setJuegos(datos)
+        setCarga(false);
+    }
     function modificarBusqueda(datos)
     {
         setBusqueda(datos);
@@ -51,8 +75,20 @@ function Blog()
                 color: TextoColor(color[0], color[1], color[2])
             }
     }
+    function addLike(like)
+    {
+        setLikes([...likes, like])
+    }
 
+    function deleteLike(li)
+    {
+        setLikes(likes.filter(like => like._id != li._id ))
+    }
 
+    function tieneLike(idJuego)
+    {
+        return likes.some(like => like.idJuego == idJuego);
+    }
     return (<>
         <div className="PerfilUsuario">
             <div className="avatar" style={color}>{usuario?.nickname?.charAt(0)}</div>
@@ -88,14 +124,14 @@ function Blog()
             </div>
         </div>
 
-        <BusquedaJuegos setJuegos={setJuegos} />
+        <BusquedaJuegos cargaJuegos={cargaJuegos} setBusquedaActiva={setBusquedaActiva}/>
         <div className="divJuegosAd">
             {
-                juegos.length > 0 ? juegos.map(juego => (
-                    <LiJuegoUsuario key={juego._id} juego={juego} />
-                )) : juegosInit.map(juego => (
-                    <LiJuegoUsuario key={juego._id} juego={juego} />
-                ))
+                (carga || !busquedaActiva)  ? juegosInit.map(juego => (
+                    <LiJuegoUsuario key={juego._id} juego={juego} like={tieneLike(juego._id)} addLike={addLike} deleteLike={deleteLike}/>
+                )) : busquedaActiva && juegos.length > 0 ? (juegos.map(juego => (
+                    <LiJuegoUsuario key={juego._id} juego={juego} like={tieneLike(juego._id)} addLike={addLike} deleteLike={deleteLike}/>
+                ))) : <li>No hay juegos disponibles</li> 
             }
         </div>
 

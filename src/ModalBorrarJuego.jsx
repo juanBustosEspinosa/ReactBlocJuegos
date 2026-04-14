@@ -11,7 +11,7 @@ function ModalBorrarJuego({juego,limpiarBorrar,visible, eliminarJuego})
                 eliminarJuego(juego.titulo, juego.desarrollador);
                 fetch(`http://localhost:3000/eliminarJuego`, {
                     method: "DELETE",
-                    body : JSON.stringify({titulo : juego.titulo, desarrollador : juego.desarrollador}),
+                    body : JSON.stringify({idJuego : juego._id}),
                     headers : {
                                 "Authorization": "Bearer " + usuario.token,
                                 "Content-Type": "application/json"

@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import Contexto from "../Contexto";
 import { useState } from "react";
 
-function BusquedaJuegos({setJuegos})
+function BusquedaJuegos({cargaJuegos,setBusquedaActiva})
 {
     const ref = useRef(null);
     const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -39,7 +39,7 @@ function BusquedaJuegos({setJuegos})
 
     useEffect(() => {
         if (!debounced || !usuario?.token){
-            setJuegos([]);
+            setBusquedaActiva(false);
             return;
         }
 
@@ -50,7 +50,7 @@ function BusquedaJuegos({setJuegos})
             }
         })
         .then(respuesta => respuesta.json())
-        .then(respuesta => setJuegos(respuesta.juegos))
+        .then(respuesta => cargaJuegos(respuesta.juegos))
         .catch(error => console.log(error));
 
     }, [debounced]);
@@ -60,7 +60,18 @@ function BusquedaJuegos({setJuegos})
         <input className="BusquedaInput" type="text" placeholder="Busqueda" onChange={(e) => setTexto(e.target.value)}/>
 
         <div className="contenedorBotonesJ" ref={ref}>
-            <button className="btn-busquedaJ">Me Gusta</button>
+            <button className="btn-busquedaJ" onClick={(evento) => {
+                evento.preventDefault();
+                fetch(`http://localhost:3000/darJuegosLikes?idUsuario=${usuario._id}`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": "Bearer " + usuario?.token
+                    }
+                })
+                .then(respuesta => respuesta.json())
+                .then(respuesta => { console.log(respuesta)
+                    cargaJuegos(respuesta.juegos)})
+            }}>Me Gusta</button>
 
             {letras.map((letra) => (
             <button className="btn-busquedaJ" key={letra} onClick={(evento) => {
@@ -72,7 +83,7 @@ function BusquedaJuegos({setJuegos})
                     }
                 })
                 .then(respuesta => respuesta.json())
-                .then(respuesta => setJuegos(respuesta.juegos))
+                .then(respuesta => cargaJuegos(respuesta.juegos))
             }}>
                 {letra}
             </button>

@@ -14,7 +14,9 @@ function LiJuego({juego,eliminarJuego})
     }    
     return(<>
         <li className="liJuegoAd">
-            <img className="imgJuegoAd" src={`http://localhost:3000/` + juego.rutaImagen} alt="" />
+            <div className="divImagenJuego">
+                <img className="imgJuegoAd" src={`http://localhost:3000/` + juego.rutaImagen} alt="" />
+            </div>
             <p className="pJuegoAd">{juego.titulo}</p>
             <p className="pJuegoAd">{juego.desarrollador}</p>
             <p className="pJuegoAd">{juego.fecha}</p>

@@ -11,7 +11,7 @@ function ModalBorrar({user,limpiarBorrar,visible, eliminarUsuario})
                 eliminarUsuario(user.correo);
                 fetch(`http://localhost:3000/eliminarUsuario`, {
                     method: "DELETE",
-                    body : JSON.stringify({correo : user.correo}),
+                    body : JSON.stringify({idUsuario : user._id}),
                     headers : {
                                 "Authorization": "Bearer " + usuario.token,
                                 "Content-Type": "application/json"
