@@ -128,9 +128,9 @@ function Blog()
         <div className="divJuegosAd">
             {
                 (carga || !busquedaActiva)  ? juegosInit.map(juego => (
-                    <LiJuegoUsuario key={juego._id} juego={juego} like={tieneLike(juego._id)} addLike={addLike} deleteLike={deleteLike}/>
+                    <LiJuegoUsuario key={juego._id} juego={juego} like={tieneLike(juego._id)} addLike={addLike} deleteLike={deleteLike} disable={false}/>
                 )) : busquedaActiva && juegos.length > 0 ? (juegos.map(juego => (
-                    <LiJuegoUsuario key={juego._id} juego={juego} like={tieneLike(juego._id)} addLike={addLike} deleteLike={deleteLike}/>
+                    <LiJuegoUsuario key={juego._id} juego={juego} like={tieneLike(juego._id)} addLike={addLike} deleteLike={deleteLike} disable={false}/>
                 ))) : <li>No hay juegos disponibles</li> 
             }
         </div>

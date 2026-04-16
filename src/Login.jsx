@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Contexto from "./Contexto";
+import Marquee from "./marquee";
+import Nave from "./nave";
 
 function Login()
 {
@@ -10,23 +12,27 @@ function Login()
     let [correo, setCorreo] = useState("");
     let [pError, setPError] = useState("");
     return(<>
+        <Marquee />
         <form className="login-form" onSubmit={(evento) => {
             setPError("");
-            let error = [];
+            let error = 0;
             evento.preventDefault();
             if (!password || password.trim() == "")
-                error.push("la contraseña"); 
+                error++; 
             if (!correo || correo.trim() == "")
-                error.push("el correo"); 
-            if (error.length > 0)
-                return setPError(error.join(", ") + " Estos campos estan mal");
+                error++; 
+            if (error > 0)
+            {
+                error = 0;
+                return setPError("la contreseña o el correo estan mal");
+            }
 
             fetch("http://localhost:3000/login",{
                 method : "POST",
                 headers : {
                     "Content-type" : "application/json"                   
                 },
-                body : JSON.stringify({correo,password})
+                body : JSON.stringify({correo : correo.trim().toLowerCase(),password})
             })
             .then(async (respuesta) => {
 
@@ -55,6 +61,8 @@ function Login()
                 </div>
             </div>
         </form>
+        <Marquee />
+        <Nave />
     </>)
 }
 

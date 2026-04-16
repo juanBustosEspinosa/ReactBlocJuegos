@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Contexto from "./Contexto";
 
-function SubirJuego()
+function SubirJuego({addJuego})
 {
     let navigate = useNavigate();
     const [titulo,setTitulo] = useState("");
@@ -34,7 +34,16 @@ function SubirJuego()
             })
             .then(respuesta => respuesta.json())
             .then(respuesta => {
-                console.log(respuesta);
+                let juego = {
+                    titulo : titulo,
+                    genero : genero,
+                    desarrollador : desarrollador,
+                    fecha : fecha,
+                    plataforma : plataforma,
+                    descripcion : descripcion,
+                    rutaImagen : `fotos/${imagen.name}`
+                }
+                addJuego(juego);
             })
         }}>
             <input type="text" placeholder="Titulo del juego" onChange={(evento)=>setTitulo(evento.target.value)} />

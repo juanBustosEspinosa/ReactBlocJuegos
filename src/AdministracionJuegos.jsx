@@ -8,7 +8,6 @@ function AdministracionJuegos()
 
     return(<>
         <NavegacionAdmin />
-        <SubirJuego />
         <Juegos />
     </>)
 

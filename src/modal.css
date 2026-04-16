@@ -195,19 +195,17 @@ button:disabled
     }
 
 
-
-
-
-
 .login-form
     {
        display: flex;
        flex-direction: column;
        justify-content: center;
        align-items: center;
-       height: 90dvh; 
+       height: 80dvh; 
        gap: 20px;
        margin: 0 auto;
+       position: relative;
+       z-index: 10;
     }
 
 .login-div
@@ -221,6 +219,7 @@ button:disabled
         border-radius: 5px;
         box-shadow: 5px 5px rgba(0, 0, 0, 0.26);
         align-items: center;
+
     }
 
 .login-div-btns
@@ -242,6 +241,12 @@ button:disabled
         background: none;
         cursor: pointer;
         padding: 10px;
+    }
+.login-inputs:focus 
+    {
+        outline: none;
+        border: 1px solid rgb(100, 150, 250);
+        box-shadow: 0 0 5px rgba(100, 150, 250, 0.3);
     }
 .error-login
     {
@@ -382,3 +387,111 @@ button:disabled
 	}
 
 
+/*Registro*/
+
+.registro-textArea 
+    {
+        width: 70%;
+        height: 100px;
+        resize: none; 
+        padding: 10px;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 5px;
+        font-family: inherit;
+        font-size: 14px;
+    }
+
+.registro-textArea:focus 
+    {
+        outline: none;
+        border: 1px solid rgb(100, 150, 250);
+        box-shadow: 0 0 5px rgba(100, 150, 250, 0.3);
+    }
+
+
+
+
+
+
+/* NAVE */
+.space 
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        background: transparent;
+    }
+
+
+.ship 
+    {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        font-size: 2em;
+        opacity: 0.8;
+        animation: fly 15s linear infinite;
+        z-index: 0;
+    }
+
+/* movimiento de la nave */
+@keyframes fly 
+    {
+        0% 
+            {
+                transform: translate(-10vw, 80vh) rotate(0deg);
+            }
+
+        33% 
+            {
+                transform: translate(50vw, 10vh) rotate(120deg);
+            }
+
+        66% 
+            {
+                transform: translate(80vw, 70vh) rotate(240deg);
+            }
+
+        100% 
+            {
+                transform: translate(120vw, 30vh) rotate(360deg);
+            }
+    }
+
+/*MANDOS*/
+.marquee {
+  width: 100%;
+  height: 10dvh;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 15s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.track span {
+  display: inline-block;
+  font-size: 2em; 
+}
+
+/* movimiento de los mandos */
+@keyframes scroll 
+    {
+        0% 
+            {
+                transform: translateX(0);
+            }
+        100% 
+            {
+                transform: translateX(-50%);
+            }
+    }

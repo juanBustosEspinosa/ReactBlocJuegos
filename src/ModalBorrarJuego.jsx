@@ -8,7 +8,7 @@ function ModalBorrarJuego({juego,limpiarBorrar,visible, eliminarJuego})
      <div className={`modal-borrar ${visible == true ? " modal-visible" : ""} `}>
           <div className="modal">
               <button className="btn-borrar" onClick={(evento) => {
-                eliminarJuego(juego.titulo, juego.desarrollador);
+                eliminarJuego(juego._id);
                 fetch(`http://localhost:3000/eliminarJuego`, {
                     method: "DELETE",
                     body : JSON.stringify({idJuego : juego._id}),

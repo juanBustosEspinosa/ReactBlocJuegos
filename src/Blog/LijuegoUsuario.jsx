@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Contexto from "../Contexto";
 
-function LiJuegoUsuario({juego, like, addLike, deleteLike})//variable con el true o false
+function LiJuegoUsuario({juego, like, addLike, deleteLike, disable})//variable con el true o false
 {
 
     let {usuario} = useContext(Contexto) 
@@ -9,7 +9,7 @@ function LiJuegoUsuario({juego, like, addLike, deleteLike})//variable con el tru
     return(<>
         <li className="liJuegoAd">
             <div className="divImagenJuego">
-                <button className="btn-like" onClick={(evento) => {
+                <button className={disable ? `invisible` : `btn-like`} onClick={(evento) => {
                     evento.preventDefault();
                     console.log("hola entre");
                     if (!like)

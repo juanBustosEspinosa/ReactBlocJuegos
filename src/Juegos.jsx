@@ -3,6 +3,7 @@ import { useState } from "react";
 import LiJuego from "./LiJuego";
 import Contexto from './Contexto'
 import { useContext } from "react";
+import SubirJuego from "./SubirJuego";
 
 function Juegos()
 {
@@ -21,12 +22,17 @@ function Juegos()
         .then(respuesta => setJuegos(respuesta.juegos));
     },[])
 
-    function eliminarJuego(titulo,desarrollador)
+    function eliminarJuego(id)
     {
-        setJuegos(juegos.filter((tituloJ,desarrolladorJ) => tituloJ != titulo && desarrollador != desarrolladorJ));
+        setJuegos(juegos.filter(juego => juego._id != id));
+    }
+    function addJuego(juego)
+    {
+        setJuegos([juego,...juegos]);
     }
     
     return(<>
+        <SubirJuego addJuego={addJuego} />
         <div className="divJuegosAd">
         {
             juegos.length == 0 ?
