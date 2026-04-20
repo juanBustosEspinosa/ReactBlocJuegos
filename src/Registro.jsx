@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Marquee from "./marquee";
+import Marquee from "./Marquee";
+import Nave from "./Nave.jsx";
 function Resgistro()
 {
     let navigate = useNavigate();

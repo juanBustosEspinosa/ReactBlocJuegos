@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Contexto from "../Contexto";
 import { Link,useLocation } from "react-router-dom";
 import LiJuegoUsuario from "./LijuegoUsuario.jsx";
+import Footer from "../Footer.jsx";
 
 function BlogUsuarioBuscado()
 {
@@ -42,21 +43,25 @@ function BlogUsuarioBuscado()
     }
 
     return (<>
-        <Link to="/">Volver</Link>
-        <div className="PerfilUsuario">
-            <div className="avatar" style={colorAvatar()}>{user?.nickname?.charAt(0)}</div>
-            <div className="PerfilDivParrafos">
-                <p className="PerfilParrafos">Nickname: {user?.nickname}</p>
-                <p className="PerfilParrafos">Correo: {user?.correo}</p>
-                <p className="PerfilParrafos">Descripcion: {user?.descripcion}</p>
+        <div className="contenedorPagina">
+
+            <Link to="/" className="volver-fixed">Volver</Link>
+            <div className="PerfilUsuario">
+                <div className="avatar" style={colorAvatar()}>{user?.nickname?.charAt(0)}</div>
+                <div className="PerfilDivParrafos">
+                    <p className="PerfilParrafos">Nickname: {user?.nickname}</p>
+                    <p className="PerfilParrafos">Correo: {user?.correo}</p>
+                    <p className="PerfilParrafos">Descripcion: {user?.descripcion}</p>
+                </div>
             </div>
-        </div>
-        <div className="divJuegosAd">
-            {
-                juegos.length > 0 ? (juegos.map(juego => (
-                    <LiJuegoUsuario key={juego._id} juego={juego} like={false} addLike={null} deleteLike={null} disable={true}/>
-                ))) : <li>No hay juegos disponibles</li> 
-            }
+            <div className="divJuegosAd">
+                {
+                    juegos.length > 0 ? (juegos.map(juego => (
+                        <LiJuegoUsuario key={juego._id} juego={juego} like={false} addLike={null} deleteLike={null} disable={true}/>
+                    ))) : <li>No hay juegos disponibles</li> 
+                }
+            </div>
+            <Footer />
         </div>
     </>);
 }

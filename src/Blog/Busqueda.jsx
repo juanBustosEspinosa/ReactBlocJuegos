@@ -36,7 +36,7 @@ function Busqueda({ accion, modificarBusqueda, setLimite }) {
     }, [debounced]);
 
     return (
-        <input className="BusquedaInput" type="text" placeholder="Busqueda" onChange={(e) => setTexto(e.target.value)} />
+        <input className="BusquedaInput" type="text" placeholder="Busqueda Usuario" onChange={(e) => setTexto(e.target.value)} />
     );
 }
 

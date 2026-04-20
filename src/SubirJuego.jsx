@@ -15,7 +15,8 @@ function SubirJuego({addJuego})
     let {usuario} = useContext(Contexto);
     console.log(usuario);
     return(<>
-        <form onSubmit={(evento) => {
+        <div className="divSubirJuego">
+        <form className="subirJuego" onSubmit={(evento) => {
             evento.preventDefault();
             let formData = new FormData();
             formData.append("titulo", titulo);
@@ -46,15 +47,16 @@ function SubirJuego({addJuego})
                 addJuego(juego);
             })
         }}>
-            <input type="text" placeholder="Titulo del juego" onChange={(evento)=>setTitulo(evento.target.value)} />
+            <input className="input-subirjuego" type="text" placeholder="Titulo del juego" onChange={(evento)=>setTitulo(evento.target.value)} />
             <textarea placeholder="Descripción" onChange={(evento)=>setDescripcion(evento.target.value)} />
-            <input type="text" placeholder="Género" onChange={(evento)=>setGenero(evento.target.value)} />
-            <input type="text" placeholder="Plataforma (PC, PS5...)" onChange={(evento)=>setPlataforma(evento.target.value)} />
-            <input type="date" onChange={(evento)=>setFecha(evento.target.value)} />
-            <input type="text" placeholder="Desarrollador" onChange={(evento)=>setDesarrollador(evento.target.value)} />
-            <input type="file" onChange={(evento)=>setImagen(evento.target.files[0])} />
-            <input type="submit" value="Subir Juego" />
+            <input className="input-subirjuego" type="text" placeholder="Género" onChange={(evento)=>setGenero(evento.target.value)} />
+            <input className="input-subirjuego" type="text" placeholder="Plataforma (PC, PS5...)" onChange={(evento)=>setPlataforma(evento.target.value)} />
+            <input className="input-subirjuego" type="date" onChange={(evento)=>setFecha(evento.target.value)} />
+            <input className="input-subirjuego" type="text" placeholder="Desarrollador" onChange={(evento)=>setDesarrollador(evento.target.value)} />
+            <input className="input-subirjuego" type="file" onChange={(evento)=>setImagen(evento.target.files[0])} />
+            <input className="input-subirjuego" type="submit" value="Subir Juego" />
         </form>
+        </div>
     </>)
 }
 

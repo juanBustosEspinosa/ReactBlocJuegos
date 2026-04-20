@@ -1,3 +1,10 @@
+body 
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+
 .error
     {
         font-size:0.9em;
@@ -108,7 +115,7 @@ button:disabled
         opacity: 1;
         cursor: not-allowed;
     }
-
+/*Juegos*/
 .divJuegosAd
     {
         display: grid;
@@ -117,52 +124,68 @@ button:disabled
         justify-items: center;
     }
 
-.liJuegoAd
+.liJuegoAd 
     {
-        border: 1px dashed black;
+        border: 1px dashed #b8c0ff;
         list-style: none;
         width: fit-content;
         max-width: 250px;
         padding: 30px;
         text-align: center;
-        border-radius: 10px;
-        background-color:rgba(159, 159, 159, 0.277);
+        border-radius: 12px;
+        background-color: #f4f6ff;
+        transition: 0.2s;
     }
 
-.liJuegoAd:nth-child(odd)
+.liJuegoAd:nth-child(odd) 
     {
-        background-color:rgba(116, 116, 255, 0.277);
+        background-color: #e9edff;
     }
 
-.pJuegoAd
+.liJuegoAd:hover 
+    {
+        background-color: #dde3ff;
+        transform: translateY(-4px);
+    }
+
+.pJuegoAd 
     {
         max-width: 100%;
         word-break: break-word;
+        color: #333;
     }
 
-.divImagenJuego
+.divImagenJuego 
     {
         width: 200px;
         height: 200px;
         position: relative;
     }
-.imgJuegoAd
+
+.imgJuegoAd 
     {
         width: 100%;
         height: 100%;
-        border-radius: 5px;
-
+        border-radius: 8px;
+        object-fit: cover;
     }
 
-.btn-JuegoAd
+.btn-JuegoAd 
     {
         padding: 10px;
-        background: rgba(180, 178, 178, 0.578);
+        background: #4a6cf7;
+        color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 6px;
         cursor: pointer;
+        margin: 5px;
+        transition: 0.2s;
     }
 
+.btn-JuegoAd:hover
+    {
+        background: #3a55d1;
+    }
 /*botones de Me Gusta*/
 
 .btn-like 
@@ -264,42 +287,64 @@ button:disabled
 
 
 /*--PERFIL---*/
-.PerfilUsuario
-    {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-        width: 100%;
-    }
+.PerfilUsuario {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 0;
+    width: 100%;
+    background: linear-gradient(145deg, #f8faff, #eef2ff);
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+.avatar {
+    width: 78px;
+    height: 78px;
+    font-size: 2em;
+    font-weight: 700;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 8px 18px rgba(74, 108, 247, 0.35);
+    flex-shrink: 0;
+}
 
+/* INFO PERFIL */
+.PerfilDivParrafos {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 
-.avatar
-    {
-        width: 80px;
-        height: 80px;
-        font-size: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
+.PerfilParrafos {
+    margin: 0;
+    font-size: 1.2em;
+    color: #4b5563;
+    line-height: 1.4;
+    max-width: 400px;
+}
 
-
-.PerfilDivParrafos
-    {
-        
-    }
-.PerfilParrafos
-    {
-
-    }
-
-
+.PerfilParrafos:first-child {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #111827;
+}
 /*Busqueda*/
+.divbuscadorWrapper
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 .buscadorWrapper {
     position: relative;
     width: 300px;
+    margin: 10px 0;
 }
 
 .resultadosBusqueda {
@@ -330,15 +375,22 @@ button:disabled
 .contenedorBusquedaJ 
 	{
 		display: flex;
-		align-items: center;
-		gap: 10px;
+		align-items: normal;
+        flex-direction: column;
+		gap: 5px;
 		width: 60%;
-		margin: 5px;
+		margin: 0 auto;
+
 	}
+
+    li {
+        list-style: none;
+    }
+
 
 .BusquedaInput 
 	{
-		flex: 0 0 180px;
+		/*flex: 0 0 180px;*/
 		padding: 8px;
 		border-radius: 8px;
 		border: 1px solid #ccc;
@@ -357,6 +409,42 @@ button:disabled
 		scrollbar-width: none; /* Firefox */
 	}
 
+    @media screen and (max-width: 400px) {
+
+}
+.contenedorPagina
+    {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+.divJuegosAd
+    {
+        flex: 1; 
+    }
+
+    .volver-fixed 
+    {
+        position: fixed;
+        top: 5px;
+        left: 15px;
+        background-color: #2a1b5a;
+        color: #c9c7ff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 14px;
+        z-index: 9999;
+        transition: all 0.2s ease;
+    }
+
+    .volver-fixed:hover 
+    {
+        background-color: #3b2a7a;
+        color: #ffffff;
+        transform: scale(1.05);
+    }
 /*Los demas navegadores*/
 .contenedorBotonesJ::-webkit-scrollbar 
 	{
@@ -483,6 +571,107 @@ button:disabled
   font-size: 2em; 
 }
 
+/*Navegador Administrador*/
+nav {
+    background-color: #4a6cf7;
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+
+}
+
+nav li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #dcdaf3;
+}
+
+/*Subir Juego*/
+.divSubirJuego
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.subirJuego {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 250px;
+    justify-content: center;
+}
+
+/* INPUTS */
+.input-subirjuego,
+.subirJuego textarea {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 230px;
+}
+
+/* TEXTAREA ocupa más espacio */
+.subirJuego textarea {
+    resize: none;
+}
+
+
+
+/* BOTÓN */
+.input-subirjuego[type="submit"] {
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.input-subirjuego[type="submit"]:hover {
+    background-color: #3a55d1;
+}
+
+/* FOOTER*/
+.footer
+{
+    background-color: #0d0b1f;
+    padding: 25px 15px;
+    text-align: center;
+    border-top: 1px solid #6c5ce7;
+    box-shadow: 0 -2px 10px rgba(108, 92, 231, 0.4);
+}
+
+.footerParrafo 
+{
+    color: #a29bfe;
+    font-size: 14px;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 5px rgba(162, 155, 254, 0.4);
+}
+
+
 /* movimiento de los mandos */
 @keyframes scroll 
     {
@@ -495,3 +684,198 @@ button:disabled
                 transform: translateX(-50%);
             }
     }
+
+/*1100*/
+@media screen and (max-width: 1100px) 
+{
+
+    .usuarioLi
+    {
+        padding:20px;
+        text-align:left;
+        font-size:1.5em;
+        color:rgb(0, 0, 0);
+        text-shadow:1px 1px 0 rgb(255, 0, 0);
+        position: relative;
+    }
+
+    .usuarioLi button
+        {
+            padding: 6px 8px;
+            margin: 0px;
+            top: 0px
+        }
+
+    .divJuegosAd
+    {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 20px;
+        justify-items: center;
+    }
+    
+    .contenedorBusquedaJ
+        {
+            flex-direction: column;
+            align-items: normal;
+            min-width: 800px;
+            margin: 0 auto;
+        }
+}
+
+@media screen and (max-width: 900px) 
+{
+    .contenedorBusquedaJ
+        {
+            flex-direction: column;
+            align-items: normal;
+            min-width: 680px;
+            margin: 0 auto;
+        }
+}
+
+/*850*/
+@media screen and (max-width: 850px) 
+{
+
+    .divJuegosAd
+    {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 20px;
+        justify-items: center;
+    }
+}
+
+/*700*/
+@media screen and (max-width: 700px) 
+{
+
+    .usuarioLi
+    {
+        padding:20px;
+        text-align:left;
+        font-size:1.5em;
+        color:rgb(0, 0, 0);
+        text-shadow:1px 1px 0 rgb(255, 0, 0);
+        position: relative;
+    }
+
+    .usuarioLi button
+        {
+            padding: 6px 8px;
+            margin: 0px;
+            top: 0px
+        }
+    .contenedorBusquedaJ
+        {
+            flex-direction: column;
+            align-items: normal;
+            min-width: 500px;
+            margin: 0 auto;
+        }
+}
+
+
+/*570*/
+@media screen and (max-width: 570px) 
+{
+    .divJuegosAd
+    {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 20px;
+        justify-items: center;
+    }
+    .contenedorBusquedaJ
+        {
+            flex-direction: column;
+            align-items: normal;
+            min-width: 360px;
+            margin: 0 auto;
+        }
+}
+
+/*400*/
+@media screen and (max-width: 400px) 
+{
+
+
+.login-div
+    {
+        width: 230px;
+        border: 1px solid rgb(80, 80, 80);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 5px 5px rgba(0, 0, 0, 0.26);
+        align-items: center;
+
+    }
+
+.login-div-btns
+    {
+        display: flex;
+        gap: 10px;
+    }    
+.login-inputs
+    {
+        padding: 10px;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 5px;
+        width: 70%;
+    }
+
+.login-btn
+    {
+        border: 1px solid rgb(221, 221, 221);
+        background: none;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+
+    .usuarioLi
+    {
+        padding:20px;
+        text-align:left;
+        font-size:1.5em;
+        color:rgb(0, 0, 0);
+        text-shadow:1px 1px 0 rgb(255, 0, 0);
+        position: relative;
+    }
+
+    .usuarioLi button
+        {
+            padding: 3px 4px;
+            margin: 2px;
+            top: 0px
+        }
+        
+    .usuarioLi button:nth-child(2) 
+    {
+        right: 55px;
+    }
+
+    .PerfilParrafos
+        {
+            font-size: 0.8em;
+            max-width: 180px;
+        }
+
+    .PerfilParrafos:first-child 
+        {
+            font-size: 1.2em;
+        }
+
+    .contenedorBusquedaJ
+        {
+            flex-direction: column;
+            align-items: normal;
+            min-width: 250px;
+            margin: 0 auto;
+        }
+
+}

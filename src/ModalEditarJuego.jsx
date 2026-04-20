@@ -34,7 +34,7 @@ function ModalEditarJuego({juego,limpiarBorrar,visible})
                 <input type="text" placeholder="desarrollador" defaultValue={desarrollador} onChange={(evento) => setDesarrollador(evento.target.value)} />
                 <input type="date" placeholder="fecha" defaultValue={fecha} onChange={(evento) => setFecha(evento.target.value)} />
                 <input type="text" placeholder="plataforma" defaultValue={plataforma} onChange={(evento) => setPlataforma(evento.target.value)} />
-                <textarea name="Descripcion" defaultValue={descripcion} onChange={(evento) => setDescripcion(evento.target.value)}></textarea>
+                <textarea className="registro-textArea" name="Descripcion" defaultValue={descripcion} onChange={(evento) => setDescripcion(evento.target.value)}></textarea>
                 <input type="text" placeholder="rutaImagen" defaultValue={rutaImagen} onChange={(evento) => setRutaImagen(evento.target.value)} />
 
                 <button className="btn-editar" onClick={(evento) => {
