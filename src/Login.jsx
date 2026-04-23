@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Contexto from "./Contexto";
-import Marquee from "./marquee";
-import Nave from "./nave";
+import Marquee from "./Marquee";
+import Nave from "./Nave";
 
 function Login()
 {
