@@ -35,15 +35,7 @@ function SubirJuego({addJuego})
             })
             .then(respuesta => respuesta.json())
             .then(respuesta => {
-                let juego = {
-                    titulo : titulo,
-                    genero : genero,
-                    desarrollador : desarrollador,
-                    fecha : fecha,
-                    plataforma : plataforma,
-                    descripcion : descripcion,
-                    rutaImagen : `https://blocjuegosapi.onrender.com/fotos/${respuesta.archivo}`
-                }
+                let juego = respuesta.juegocreado;
                 addJuego(juego);
             })
         }}>
