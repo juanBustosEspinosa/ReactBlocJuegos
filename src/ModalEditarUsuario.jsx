@@ -31,7 +31,7 @@ function ModalEditarUsuario({user,limpiarBorrar,visible})
                         let crearusuario = {nickname, correo : user.correo, descripcion};
                         if (password)
                             crearusuario.password = password;
-                        fetch("http://localhost:3000/actualizarUsuario",{
+                        fetch("https://blocjuegosapi.onrender.com/actualizarUsuario",{
                             method : "PUT",
                             headers : {
                                 "Authorization": "Bearer " + usuario.token,

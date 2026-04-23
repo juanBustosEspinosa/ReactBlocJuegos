@@ -22,7 +22,7 @@ function Blog()
         if (!usuario)
             navigate("/login");
 
-        fetch("http://localhost:3000/inicioJuegos",{
+        fetch("https://blocjuegosapi.onrender.com/inicioJuegos",{
             method : "GET",
             headers: {
                 "Authorization": "Bearer " + usuario.token
@@ -34,7 +34,7 @@ function Blog()
         })
 
 
-        fetch(`http://localhost:3000/darLikes?idUsuario=${usuario._id}`,{
+        fetch(`https://blocjuegosapi.onrender.com/darLikes?idUsuario=${usuario._id}`,{
             method : "GET",
             headers: {
                 "Authorization": "Bearer " + usuario.token

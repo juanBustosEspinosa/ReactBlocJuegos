@@ -8,7 +8,7 @@ function Usuarios()
     let {usuario} = useContext(Contexto);
 
     useEffect(() => {
-        fetch("http://localhost:3000/darUsuarios",{
+        fetch("https://blocjuegosapi.onrender.com/darUsuarios",{
             method : "GET",
             headers : {
                 "Authorization": "Bearer " + usuario.token

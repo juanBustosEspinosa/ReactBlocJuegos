@@ -12,7 +12,7 @@ function Juegos()
 
     
     useEffect(() => {
-        fetch("http://localhost:3000/darJuegos",{
+        fetch("https://blocjuegosapi.onrender.com/darJuegos",{
             method : "GET",
             headers : {
                 "Authorization": "Bearer " + usuario.token

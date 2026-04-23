@@ -14,7 +14,7 @@ function LiJuegoUsuario({juego, like, addLike, deleteLike, disable})//variable c
                     console.log("hola entre");
                     if (!like)
                     {
-                        fetch("http://localhost:3000/crearLike", {
+                        fetch("https://blocjuegosapi.onrender.com/crearLike", {
                             method: "POST",
                             body : JSON.stringify({Like : {idUsuario : usuario._id, idJuego : juego._id}}),
                             headers : {
@@ -27,7 +27,7 @@ function LiJuegoUsuario({juego, like, addLike, deleteLike, disable})//variable c
                     } 
                     else 
                     {   
-                        fetch("http://localhost:3000/eliminarlike", {
+                        fetch("https://blocjuegosapi.onrender.com/eliminarlike", {
                             method: "DELETE",
                             body : JSON.stringify({idUsuario : usuario._id, idJuego : juego._id}),
                             headers : {
@@ -41,7 +41,7 @@ function LiJuegoUsuario({juego, like, addLike, deleteLike, disable})//variable c
                     
 
                 }}><span className={like ? `corazon activo` : `corazon`}>{like ? "❤️" : "🤍"}</span></button>   
-                <img className="imgJuegoAd" src={`http://localhost:3000/` + juego.rutaImagen} alt="" />
+                <img className="imgJuegoAd" src={`https://blocjuegosapi.onrender.com/` + juego.rutaImagen} alt="" />
             </div>
             <p className="pJuegoAd">{juego.titulo}</p>
             <p className="pJuegoAd">{juego.desarrollador}</p>

@@ -40,7 +40,7 @@ function ModalEditarJuego({juego,limpiarBorrar,visible})
                 <button className="btn-editar" onClick={(evento) => {
                     evento.preventDefault();
                     let updateJuego = {_id : juego._id,titulo,genero,desarrollador,fecha,plataforma,descripcion,rutaImagen};
-                    fetch("http://localhost:3000/actualizarJuego",{
+                    fetch("https://blocjuegosapi.onrender.com/actualizarJuego",{
                         method : "PUT",
                         headers : {
                             "Authorization": "Bearer " + usuario.token,

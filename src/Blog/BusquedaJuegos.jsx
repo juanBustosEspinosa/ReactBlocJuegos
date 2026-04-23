@@ -43,7 +43,7 @@ function BusquedaJuegos({cargaJuegos,setBusquedaActiva})
             return;
         }
 
-        fetch(`http://localhost:3000/buscarJuegos?titulo=${debounced}`, {
+        fetch(`https://blocjuegosapi.onrender.com/buscarJuegos?titulo=${debounced}`, {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + usuario.token
@@ -62,7 +62,7 @@ function BusquedaJuegos({cargaJuegos,setBusquedaActiva})
         <div className="contenedorBotonesJ" ref={ref}>
             <button className="btn-busquedaJ" onClick={(evento) => {
                 evento.preventDefault();
-                fetch(`http://localhost:3000/darJuegosLikes?idUsuario=${usuario._id}`, {
+                fetch(`https://blocjuegosapi.onrender.com/darJuegosLikes?idUsuario=${usuario._id}`, {
                     method: "GET",
                     headers: {
                         "Authorization": "Bearer " + usuario?.token
@@ -76,7 +76,7 @@ function BusquedaJuegos({cargaJuegos,setBusquedaActiva})
             {letras.map((letra) => (
             <button className="btn-busquedaJ" key={letra} onClick={(evento) => {
                 evento.preventDefault();
-                fetch(`http://localhost:3000/buscarJuegos?titulo=${letra}`, {
+                fetch(`https://blocjuegosapi.onrender.com/buscarJuegos?titulo=${letra}`, {
                     method: "GET",
                     headers: {
                         "Authorization": "Bearer " + usuario?.token

@@ -12,7 +12,7 @@ function BlogUsuarioBuscado()
     let [juegos,setJuegos] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/darJuegosLikes?idUsuario=${user._id}`, {
+        fetch(`https://blocjuegosapi.onrender.com/darJuegosLikes?idUsuario=${user._id}`, {
                     method: "GET",
                     headers: {
                         "Authorization": "Bearer " + usuario?.token

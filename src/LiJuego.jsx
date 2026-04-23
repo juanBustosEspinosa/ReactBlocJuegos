@@ -15,7 +15,7 @@ function LiJuego({juego,eliminarJuego})
     return(<>
         <li className="liJuegoAd">
             <div className="divImagenJuego">
-                <img className="imgJuegoAd" src={`http://localhost:3000/` + juego.rutaImagen} alt="" />
+                <img className="imgJuegoAd" src={`https://blocjuegosapi.onrender.com/` + juego.rutaImagen} alt="" />
             </div>
             <p className="pJuegoAd">{juego.titulo}</p>
             <p className="pJuegoAd">{juego.desarrollador}</p>

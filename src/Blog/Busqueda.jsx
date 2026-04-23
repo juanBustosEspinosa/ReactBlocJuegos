@@ -23,7 +23,7 @@ function Busqueda({ accion, modificarBusqueda, setLimite }) {
             return;
         }
 
-        fetch(`http://localhost:3000/${accion}?nickname=${debounced}`, {
+        fetch(`https://blocjuegosapi.onrender.com/${accion}?nickname=${debounced}`, {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + usuario.token

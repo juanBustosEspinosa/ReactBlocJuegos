@@ -26,7 +26,7 @@ function SubirJuego({addJuego})
             formData.append("plataforma", plataforma);
             formData.append("descripcion", descripcion);
             formData.append("imagen", imagen); 
-            fetch("http://localhost:3000/subirJuego",{
+            fetch("https://blocjuegosapi.onrender.com/subirJuego",{
                 method : "POST",
                 body : formData,
                 headers : {

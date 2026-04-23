@@ -9,7 +9,7 @@ function ModalBorrar({user,limpiarBorrar,visible, eliminarUsuario})
           <div className="modal">
               <button className="btn-borrar" onClick={(evento) => {
                 eliminarUsuario(user.correo);
-                fetch(`http://localhost:3000/eliminarUsuario`, {
+                fetch(`https://blocjuegosapi.onrender.com/eliminarUsuario`, {
                     method: "DELETE",
                     body : JSON.stringify({idUsuario : user._id}),
                     headers : {

@@ -9,7 +9,7 @@ function ModalBorrarJuego({juego,limpiarBorrar,visible, eliminarJuego})
           <div className="modal">
               <button className="btn-borrar" onClick={(evento) => {
                 eliminarJuego(juego._id);
-                fetch(`http://localhost:3000/eliminarJuego`, {
+                fetch(`https://blocjuegosapi.onrender.com/eliminarJuego`, {
                     method: "DELETE",
                     body : JSON.stringify({idJuego : juego._id}),
                     headers : {

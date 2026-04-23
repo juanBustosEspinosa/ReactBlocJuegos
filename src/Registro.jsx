@@ -34,7 +34,7 @@ function Resgistro()
             if (!repex.test(correo))
                 return setPError("el correo no es valido");
 
-            fetch("http://localhost:3000/crearUsuario",{
+            fetch("https://blocjuegosapi.onrender.com/crearUsuario",{
                 method : "POST",
                 headers : {
                     "Content-type" : "application/json"                   
