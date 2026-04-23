@@ -42,7 +42,7 @@ function SubirJuego({addJuego})
                     fecha : fecha,
                     plataforma : plataforma,
                     descripcion : descripcion,
-                    rutaImagen : `fotos/${imagen.name}`
+                    rutaImagen : `https://blocjuegosapi.onrender.com/fotos/${imagen.name}`
                 }
                 addJuego(juego);
             })
